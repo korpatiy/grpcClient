@@ -3,7 +3,22 @@ syntax = "proto3";
 option java_multiple_files = true;
 
 message Request {
-  string message = 1;
+  string sex = 1;
+  string raceDate = 2;
+  string startTime = 3;
+  string stageName = 4;
+  string trackLocation = 5;
+  int32 trackLength = 6;
+  string discName = 7;
+  int32 discLines = 8;
+  int32 discFines = 9;
+  string stageStart = 10;
+  string stageEnd = 11;
+  string champName = 12;
+  string champStart = 13;
+  string champEnd = 14;
+  string cityName = 15;
+  string countryName = 16;
 }
 
 message Reply {
@@ -11,5 +26,5 @@ message Reply {
 }
 
 service MigrationGRPCService {
-  rpc migrateData(Request) returns (Reply) {};
+  rpc MigrateData(Request) returns (Reply) {};
 }

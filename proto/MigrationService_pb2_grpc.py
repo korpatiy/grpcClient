@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from proto import MigrationService_pb2 as proto_dot_MigrationService__pb2
+import MigrationService_pb2 as MigrationService__pb2
 
 
 class MigrationGRPCServiceStub(object):
@@ -14,17 +14,17 @@ class MigrationGRPCServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.migrateData = channel.unary_unary(
-                '/MigrationGRPCService/migrateData',
-                request_serializer=proto_dot_MigrationService__pb2.Request.SerializeToString,
-                response_deserializer=proto_dot_MigrationService__pb2.Reply.FromString,
+        self.MigrateData = channel.unary_unary(
+                '/MigrationGRPCService/MigrateData',
+                request_serializer=MigrationService__pb2.Request.SerializeToString,
+                response_deserializer=MigrationService__pb2.Reply.FromString,
                 )
 
 
 class MigrationGRPCServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def migrateData(self, request, context):
+    def MigrateData(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -33,10 +33,10 @@ class MigrationGRPCServiceServicer(object):
 
 def add_MigrationGRPCServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'migrateData': grpc.unary_unary_rpc_method_handler(
-                    servicer.migrateData,
-                    request_deserializer=proto_dot_MigrationService__pb2.Request.FromString,
-                    response_serializer=proto_dot_MigrationService__pb2.Reply.SerializeToString,
+            'MigrateData': grpc.unary_unary_rpc_method_handler(
+                    servicer.MigrateData,
+                    request_deserializer=MigrationService__pb2.Request.FromString,
+                    response_serializer=MigrationService__pb2.Reply.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -49,7 +49,7 @@ class MigrationGRPCService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def migrateData(request,
+    def MigrateData(request,
             target,
             options=(),
             channel_credentials=None,
@@ -59,8 +59,8 @@ class MigrationGRPCService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/MigrationGRPCService/migrateData',
-            proto_dot_MigrationService__pb2.Request.SerializeToString,
-            proto_dot_MigrationService__pb2.Reply.FromString,
+        return grpc.experimental.unary_unary(request, target, '/MigrationGRPCService/MigrateData',
+            MigrationService__pb2.Request.SerializeToString,
+            MigrationService__pb2.Reply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
